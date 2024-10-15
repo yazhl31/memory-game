@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #6563ff;
+}
+
+.wrapper {
+    height: 400px;
+    width: 400px;
+    padding: 25px;
+    background-color: plum;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.message-box {
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    font-size: 1.5em;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.message-box.visible {
+    opacity: 1;
+}
+
+.cards, .card, .view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cards {
+    height: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.cards .card {
+    cursor: pointer;
+    position: relative;
+    perspective: 800px;
+    height: calc(100% / 4 - 10px);
+    width: calc(100% / 4 - 10px);
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.card.shake {
+    animation: shake 0.35s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    20%, 60% {
+        transform: translateX(-8px);
+    }
+    40%, 80% {
+        transform: translateX(8px);
+    }
+}
+
+.cards .card .view {
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    position: absolute;
+    pointer-events: none;
+    background-color: #fff;
+    border-radius: 7px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    backface-visibility: hidden;
+}
+
+.card .front-view span {
+    color: #6563ff;
+    font-size: 40px;
+}
+
+.card .back-view {
+    transform: rotateY(180deg);
+}
+
+.card .back-view img {
+    max-width: 45px;
+}
+
+.card.flip .front-view {
+    transform: rotateY(180deg);
+}
+
+.card.flip .back-view {
+    transform: rotateY(0);
+}
